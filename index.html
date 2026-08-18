@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú de la Casa ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fff7f7;
+      color: #4b2f2f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 28px 16px;
+      overflow-x: hidden;
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 28px;
+      opacity: 0.18;
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .h1 { top: 4%; left: 6%; transform: rotate(-15deg); }
+    .h2 { top: 12%; right: 8%; transform: rotate(12deg); }
+    .h3 { top: 36%; left: 3%; transform: rotate(8deg); }
+    .h4 { top: 50%; right: 4%; transform: rotate(-10deg); }
+    .h5 { bottom: 12%; left: 8%; transform: rotate(15deg); }
+    .h6 { bottom: 5%; right: 10%; transform: rotate(-8deg); }
+    .h7 { top: 72%; left: 2%; }
+    .h8 { top: 24%; right: 2%; }
+
+    .menu {
+      width: 100%;
+      max-width: 720px;
+      background: rgba(255,255,255,0.96);
+      border: 2px solid #e8b7bd;
+      border-radius: 24px;
+      padding: 34px 28px;
+      box-shadow: 0 16px 40px rgba(93, 42, 49, 0.12);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .mini-hearts {
+      letter-spacing: 10px;
+      color: #c65362;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 4px 0 6px;
+      font-size: clamp(34px, 8vw, 54px);
+      font-weight: normal;
+      color: #7f2f3b;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      font-style: italic;
+      color: #9b646b;
+      font-size: 17px;
+    }
+
+    h2 {
+      font-size: 21px;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #7f2f3b;
+      margin: 28px 0 14px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .option {
+      position: relative;
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option label {
+      display: block;
+      height: 100%;
+      padding: 20px 16px;
+      border: 1.5px solid #edcbd0;
+      border-radius: 18px;
+      background: #fffafa;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .option label:hover {
+      transform: translateY(-2px);
+      border-color: #cc7d88;
+    }
+
+    .option input:checked + label {
+      border: 2px solid #a93e4e;
+      background: #fff0f2;
+      box-shadow: 0 8px 20px rgba(169, 62, 78, 0.12);
+    }
+
+    .number {
+      color: #b24d5d;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .dish {
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .drinks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .drink {
+      position: relative;
+    }
+
+    .drink input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .drink label {
+      display: block;
+      padding: 13px 10px;
+      border-radius: 14px;
+      border: 1.5px solid #edcbd0;
+      background: #fffafa;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .drink input:checked + label {
+      background: #fff0f2;
+      border: 2px solid #a93e4e;
+      color: #7f2f3b;
+    }
+
+    button {
+      margin-top: 28px;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-family: inherit;
+      background: #9d3b49;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(157, 59, 73, 0.2);
+    }
+
+    button:hover {
+      filter: brightness(1.05);
+    }
+
+    #resultado {
+      display: none;
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 16px;
+      background: #fff0f2;
+      color: #71313a;
+      line-height: 1.5;
+    }
+
+    .footer {
+      margin-top: 28px;
+      color: #a27177;
+      font-size: 14px;
+    }
+
+    @media (max-width: 620px) {
+      .menu {
+        padding: 28px 18px;
+      }
+
+      .options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart h1">♥</div>
+  <div class="heart h2">♡</div>
+  <div class="heart h3">♥</div>
+  <div class="heart h4">♡</div>
+  <div class="heart h5">♥</div>
+  <div class="heart h6">♡</div>
+  <div class="heart h7">♥</div>
+  <div class="heart h8">♡</div>
+
+  <main class="menu">
+    <div class="mini-hearts">♥ ♡ ♥</div>
+    <h1>Menú de la Casa</h1>
+    <p class="subtitle">Cena preparada con mucho amor ❤️</p>
+
+    <h2>Plato principal</h2>
+
+    <div class="options">
+      <div class="option">
+        <input type="radio" name="menu" id="menu1" value="Carne con pimentón y arroz chop suey">
+        <label for="menu1">
+          <div class="number">Menú 1</div>
+          <div class="dish">Carne con pimentón<br>y arroz chop suey</div>
+        </label>
+      </div>
+
+      <div class="option">
+        <input type="radio" name="menu" id="menu2" value="Arroz blanco, tomate asiático y huevo">
+        <label for="menu2">
+          <div class="number">Menú 2</div>
+          <div class="dish">Arroz blanco, tomate asiático<br>y huevo</div>
+        </label>
+      </div>
+    </div>
+
+    <h2>Bebida</h2>
+
+    <div class="drinks">
+      <div class="drink">
+        <input type="radio" name="bebida" id="agua" value="Agua">
+        <label for="agua">💧 Agua</label>
+      </div>
+
+      <div class="drink">
+        <input type="radio" name="bebida" id="coca" value="Coca-Cola Zero">
+        <label for="coca">🥤 Coca Zero</label>
+      </div>
+
+      <div class="drink">
+        <input type="radio" name="bebida" id="simba" value="Simba Manzana">
+        <label for="simba">🍏 Simba Manzana</label>
+      </div>
+
+      <div class="drink">
+        <input type="radio" name="bebida" id="mate" value="Mate">
+        <label for="mate">🧉 Mate</label>
+      </div>
+    </div>
+
+    <button onclick="confirmar()">Confirmar mi cena ♥</button>
+
+    <div id="resultado"></div>
+
+    <div class="footer">♥ Hecho especialmente para vos ♥</div>
+  </main>
+
+  
+  <script>
+    function confirmar() {
+      const menu = document.querySelector('input[name="menu"]:checked');
+      const bebida = document.querySelector('input[name="bebida"]:checked');
+      const resultado = document.getElementById('resultado');
+
+      if (!menu || !bebida) {
+        resultado.style.display = 'block';
+        resultado.innerHTML = 'Primero elegí tu plato y tu bebida, amor ❤️';
+        return;
+      }
+
+      const mensaje =
+        '❤️ *Mi elección para la cena* ❤️
+
+' +
+        '🍽️ *Plato:* ' + menu.value + '
+' +
+        '🥤 *Bebida:* ' + bebida.value + '
+
+' +
+        'Pedido confirmado con mucho amor 💕';
+
+      const telefono = '59177059843';
+      const urlWhatsApp =
+        'https://wa.me/' + telefono + '?text=' + encodeURIComponent(mensaje);
+
+      resultado.style.display = 'block';
+      resultado.innerHTML =
+        '♥ Tu elección está lista ♥<br><br>' +
+        '<strong>' + menu.value + '</strong><br>' +
+        bebida.value +
+        '<br><br>Abriendo WhatsApp para confirmar 💕';
+
+      window.open(urlWhatsApp, '_blank');
+    }
+  </script>
+
+</body>
+</html>
