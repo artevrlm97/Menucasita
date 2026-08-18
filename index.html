@@ -291,18 +291,15 @@
         return;
       }
 
-      const mensaje =
-        '❤️ *Mi elección para la cena* ❤️
-
-' +
-        '🍽️ *Plato:* ' + menu.value + '
-' +
-        '🥤 *Bebida:* ' + bebida.value + '
-
-' +
-        'Pedido confirmado con mucho amor 💕';
-
       const telefono = '59177059843';
+
+      const mensaje = `❤️ Mi elección para la cena ❤️
+
+🍽️ Plato: ${menu.value}
+🥤 Bebida: ${bebida.value}
+
+Pedido confirmado con mucho amor 💕`;
+
       const urlWhatsApp =
         'https://wa.me/' + telefono + '?text=' + encodeURIComponent(mensaje);
 
@@ -311,9 +308,13 @@
         '♥ Tu elección está lista ♥<br><br>' +
         '<strong>' + menu.value + '</strong><br>' +
         bebida.value +
-        '<br><br>Abriendo WhatsApp para confirmar 💕';
+        '<br><br>' +
+        '<a id="whatsappLink" href="' + urlWhatsApp + '" ' +
+        'style="display:inline-block;margin-top:12px;color:#7f2f3b;font-weight:bold;">' +
+        'Abrir WhatsApp ❤️</a>';
 
-      window.open(urlWhatsApp, '_blank');
+      // Redirección en la misma pestaña: evita bloqueadores de ventanas emergentes.
+      window.location.href = urlWhatsApp;
     }
   </script>
 
