@@ -123,6 +123,11 @@
     .dish-visual.burger { background: #e0e6d5; }
     .dish-visual.lomo { background: #ecddcf; }
     .dish-visual.luisin { background: #e1e7dc; }
+    .dish-visual.salad, .dish-visual.hamburger { background: #e0e6d5; }
+    .dish-visual.steak { background: #ecddcf; }
+    .dish-visual.burger-fries, .dish-visual.pizza, .dish-visual.milanesa { background: #f0dec6; }
+    .dish-visual.chicken { background: #e1e7dc; }
+    .dish-visual.sandwich { background: #ebe9d8; }
     :root[data-theme="dark"] .dish-visual { filter: brightness(.83) saturate(.88); }
     .dish-art { width: 100%; height: 100%; max-width: 205px; transition: transform .5s var(--ease); }
     .dish-option input:checked + .dish-card .dish-art { transform: rotate(-5deg) scale(1.055); }
@@ -148,6 +153,9 @@
     .tiny-label .icon { width: 12px; height: 12px; }
     .drink-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
     .drink-option { cursor: pointer; position: relative; min-width: 0; }
+    @media (max-width: 699px) {
+      .drink-option:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc((100% - 13px) / 2); justify-self: center; }
+    }
     .drink-card { border: 1px solid var(--line); border-radius: 21px; padding: 15px 12px 12px; background: var(--paper); position: relative; display: flex; align-items: center; flex-direction: column; transition: all .25s var(--ease); overflow: hidden; }
     .drink-art { width: 85px; height: 99px; z-index: 1; transition: transform .35s var(--ease); }
     .drink-name { z-index: 1; font-size: 13px; font-weight: 650; margin-top: 6px; }
@@ -268,7 +276,7 @@
       .journey-line { max-width: none; }
       .mode-switch { max-width: 480px; }
       .dish-grid { grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; }
-      .dish-grid.order-grid { grid-template-columns: repeat(2,minmax(0,1fr)); max-width: 600px; }
+      .dish-grid.order-grid { grid-template-columns: repeat(3,minmax(0,1fr)); max-width: none; }
       .dish-grid.order-grid .dish-visual { height: 175px; }
       .dish-visual { height: 165px; }
       .dish-title { font-size: 15px; }
@@ -276,7 +284,7 @@
       h2 { font-size: 32px; }
       .section-heading { margin-top: 29px; }
       .shuffle-button { font-size: 12px; padding: 10px 18px; }
-      .drink-grid { max-width: 530px; }
+      .drink-grid { grid-template-columns: repeat(3,minmax(0,1fr)); max-width: 820px; }
       .drink-card { flex-direction: row; padding: 12px; gap: 8px; flex-wrap: wrap; }
       .drink-art { height: 92px; width: 65px; }
       .drink-name { margin-top: 0; }
@@ -307,6 +315,7 @@
       .section-caption { font-size: 10px; }
       .shuffle-button { font-size: 9px; padding: 8px 9px; }
       .dish-grid, .drink-grid { gap: 10px; }
+      .drink-option:last-child:nth-child(odd) { width: calc((100% - 10px) / 2); }
       .dish-visual { height: 124px; margin: 5px 5px 0; }
       .dish-title { font-size: 12px; }
       .dish-info { padding: 10px; min-height: 79px; }
@@ -518,6 +527,119 @@
 <symbol id="art-water" viewBox="0 0 100 120"><ellipse cx="51" cy="110" rx="24" ry="5" fill="#384d40" opacity=".10"/><path d="M40 18v18c0 8-12 12-12 24v40c0 13 44 13 44 0V60c0-12-12-16-12-24V18Z" fill="url(#glass-fill)" stroke="#94b6aa" stroke-width="1.2"/><path d="M33 58c4-10 12-15 12-22V22" fill="none" stroke="#f8fff2" stroke-width="2.8" stroke-linecap="round"/><rect x="38" y="11" width="24" height="11" rx="3" fill="#6f8b69"/><path d="M41 12v8m5-8v8m5-8v8m5-8v8" stroke="#9eac8a" stroke-width="1.2"/><path d="M29 61c12 3 29 3 42 0v28c-14 4-30 4-42 0Z" fill="#f7f2dd"/><path d="M38 72c4-5 8 5 12 0s8 5 12 0m-24 7c4-5 8 5 12 0s8 5 12 0" fill="none" stroke="#5f876e" stroke-width="1.4"/><circle cx="49" cy="97" r="2.2" fill="none" stroke="#86ac9c" stroke-width=".8"/><circle cx="58" cy="52" r="2.2" fill="none" stroke="#86ac9c" stroke-width=".8"/><circle cx="49" cy="44" r="1.2" fill="#f8fff0"/><circle cx="59" cy="101" r="1.4" fill="#f8fff0"/><path d="M34 91v10c0 3 8 4 10 4" fill="none" stroke="#f8fff2" stroke-width="2.5" stroke-linecap="round"/></symbol>
 <symbol id="art-hero" viewBox="0 0 260 260"><g transform="rotate(17 126 131)"><rect x="44" y="30" width="179" height="196" rx="10" fill="url(#gingham)"/><path d="M48 221h170" stroke="#c49379" stroke-dasharray="2 3" opacity=".65"/></g><use href="#art-pasta" x="-4" y="27" width="255" height="209"/><use href="#leaf" x="29" y="194" width="35" height="22" transform="rotate(33 46 205)"/><use href="#leaf" x="25" y="209" width="25" height="16" transform="rotate(68 37 217)"/></symbol>
 
+
+<!-- Ilustraciones del menú actualizado. Son decorativas, no recetas. -->
+<linearGradient id="orange-fill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3bf64"/><stop offset="1" stop-color="#db8e38"/></linearGradient>
+<symbol id="food-hamburger" viewBox="0 0 160 130">
+ <ellipse cx="80" cy="112" rx="57" ry="9" fill="#5b412a" opacity=".12"/>
+ <path d="M26 92c3 28 105 28 108 0Z" fill="#be7838"/><path d="M27 91c2 19 104 20 106 0Z" fill="url(#bun-fill)"/>
+ <path d="M24 80c4-8 13-9 23-6 18-7 48-8 69-2 12-2 21 3 21 11 0 12-104 15-113-3Z" fill="#603e2c"/>
+ <path d="M30 80c18-5 76-9 99-1" fill="none" stroke="#95603b" stroke-width="4" stroke-linecap="round"/>
+ <path d="m28 72 100-3-13 17-22-6-26 11-11-13-23 2Z" fill="#e9bc62"/>
+ <path d="M25 66c10-10 19-1 27-8 9-6 21 5 29-1 13-7 17 4 27 0 11-5 13 4 25 4l-4 13c-12-3-17 5-26 0-10-6-16 5-28 1-11-6-15 6-26 0-10-5-17 3-24-1Z" fill="#6e874d"/>
+ <path d="M31 63c23-9 78-10 99-2l-2 6c-22-7-73-5-96 2Z" fill="#b74f35"/>
+ <path d="M25 57C28 4 125 0 136 52c1 14-103 21-111 5Z" fill="url(#bun-fill)"/>
+ <path d="M37 42c9-21 37-29 60-20" fill="none" stroke="#f5ce8c" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+ <path d="m58 31 3 2m15-9 4 1m18 7 3-2m-24 11 4 1m31 0 2 3m-58-2 2 2m40-26 3 2m-8 22 3 0" stroke="#fff0c3" stroke-width="2.4" stroke-linecap="round"/>
+</symbol>
+<symbol id="art-hamburger" viewBox="0 0 220 180"><use href="#art-plate" width="220" height="180"/><use href="#food-hamburger" x="32" y="24" width="156" height="127" transform="rotate(-7 110 95)"/></symbol>
+<symbol id="art-burger-fries" viewBox="0 0 220 180">
+ <use href="#art-plate" width="220" height="180"/>
+ <g transform="rotate(12 157 97)" stroke-linejoin="round">
+  <path d="m145 60 6-1 11 69-7 2Z" fill="#dba04b"/><path d="m162 52 7 1-1 73-8-1Z" fill="#e6b05b"/><path d="m173 66 7 2-7 63-7-2Z" fill="#d6973f"/>
+  <path d="m139 78 7-2 18 61-7 2Z" fill="#e7b35d"/><path d="m156 67 7-1 4 70-7 1Z" fill="#f0c671"/><path d="m178 83 7 3-18 52-7-2Z" fill="#e5ad53"/>
+  <path d="m148 64 8 58m9-65-1 61m-22-36 15 50m20-45-13 43" fill="none" stroke="#f8d999" stroke-width="2" stroke-linecap="round"/>
+ </g>
+ <use href="#food-hamburger" x="25" y="38" width="139" height="113" transform="rotate(-9 93 96)"/>
+ <use href="#leaf" x="166" y="117" width="23" height="16" transform="rotate(24 177 125)"/>
+</symbol>
+<symbol id="art-pizza" viewBox="0 0 220 180">
+ <use href="#art-plate" width="220" height="180"/>
+ <g transform="rotate(-10 110 96)">
+  <ellipse cx="110" cy="100" rx="73" ry="44" fill="#b97838"/><ellipse cx="110" cy="94" rx="73" ry="44" fill="url(#bun-fill)"/>
+  <ellipse cx="110" cy="94" rx="63" ry="35" fill="#af4831"/><path d="M53 88c3-12 29-25 55-25 30-2 61 15 59 30-1 17-31 32-59 31-30 0-58-15-55-36Z" fill="#eac576"/>
+  <path d="m53 93 112 2m-97-27 84 55m-43-62 4 65m40-55-85 49" stroke="#b78342" stroke-width="1.4" opacity=".8"/>
+  <g fill="#b65336" stroke="#ce7650" stroke-width="2"><ellipse cx="84" cy="80" rx="10" ry="6"/><ellipse cx="125" cy="77" rx="11" ry="7"/><ellipse cx="145" cy="98" rx="10" ry="7"/><ellipse cx="111" cy="110" rx="11" ry="7"/><ellipse cx="75" cy="104" rx="10" ry="6"/></g>
+  <g fill="#efce8a"><circle cx="82" cy="80" r="1.4"/><circle cx="127" cy="76" r="1.3"/><circle cx="142" cy="97" r="1.3"/><circle cx="112" cy="111" r="1.4"/><circle cx="76" cy="104" r="1.2"/></g>
+  <use href="#leaf" x="96" y="85" width="22" height="14" transform="rotate(-26 107 92)"/>
+  <path d="m55 78 5-3m42-19 8-1m56 24 3 4m-26 46-6 2m-72-6-4-2" stroke="#f3d39c" stroke-width="3" stroke-linecap="round"/>
+ </g>
+</symbol>
+<symbol id="art-salad" viewBox="0 0 220 180">
+ <use href="#art-plate" width="220" height="180"/>
+ <path d="M46 93c6 59 120 60 129 0Z" fill="#c7d0b3"/><path d="M48 91c6 47 116 50 124 0Z" fill="#e5ead5"/>
+ <ellipse cx="110" cy="91" rx="64" ry="34" fill="#d3dcbb"/>
+ <g fill="#849d5a"><path d="M54 89c-12-11 0-19 10-15-8-15 9-24 20-13 5-13 21-6 18 4l15 26Z"/><path d="M110 78c-2-24 20-25 22-13 11-14 30-2 19 10 21-9 30 13 13 23l-50 8Z"/><path d="M65 99c-18 6-6 21 9 16-2 17 20 16 24 3 11 18 29 8 26-8l-24-26Z"/></g>
+ <g fill="#638348"><path d="M72 86c-5-18 20-22 25-7 8-12 20-7 18 7 18-4 19 14 5 20l-34-3Z"/><path d="M125 96c5-14 24-12 25 0 20-1 17 17 0 18-7 12-25 9-26-3Z"/></g>
+ <g fill="none" stroke="#aec280" stroke-width="1.5" stroke-linecap="round"><path d="m67 75 21 25m-5-21 6 16m-28-6 18 5m48-20-13 30m23-21-17 11m19 6-16 11M77 110l22-4"/></g>
+ <g fill="#d57548" stroke="#b44d32" stroke-width="2"><path d="M56 95c9-13 21-5 23 3l-19 7Z"/><path d="M104 64c11-7 25-1 27 11l-20 4Z"/><path d="M126 116c3-11 16-16 26-8l-7 12Z"/></g>
+ <path d="m63 95 5 3m47-30 4 5m18 39 5-1" stroke="#f1c887" stroke-width="2" stroke-linecap="round"/>
+ <path d="M58 119c20 19 64 24 88 6" fill="none" stroke="#f8faec" stroke-width="3" stroke-linecap="round"/>
+</symbol>
+<symbol id="art-steak" viewBox="0 0 220 180">
+ <use href="#art-plate" width="220" height="180"/>
+ <g transform="rotate(-8 110 96)">
+  <ellipse cx="77" cy="84" rx="30" ry="24" fill="#b78046"/>
+  <g fill="none" stroke-linecap="round"><path d="M48 83c8-23 39-24 51-7S72 99 57 87s17-26 39-8M50 90c7-15 43-14 46-1S73 109 63 95s22-28 38-8M58 68c3 16 22 28 38 25M52 99c12-11 28-13 47-3" stroke="#d8aa63" stroke-width="4"/><path d="M49 80c9-6 40-9 44 3S71 96 63 84m-4-13c11 15 24 14 32 9M58 96c12-6 25-7 39-3" stroke="#ebc783" stroke-width="2"/></g>
+  <path d="M89 96c6-21 36-32 60-22 18 7 28 26 18 40-14 16-41 21-67 12-14-5-17-18-11-30Z" fill="#57382a"/>
+  <path d="M90 91c8-18 35-28 58-18 16 7 26 21 18 35-10 16-41 22-64 13-14-5-18-18-12-30Z" fill="#92603e"/>
+  <path d="m99 88 11 29m4-35 13 36m3-40 14 35m2-31 11 24" stroke="#5d3b2a" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M97 87c12-12 32-15 50-7" fill="none" stroke="#c18e58" stroke-width="2.4" stroke-linecap="round"/>
+  <g transform="translate(67 120) rotate(7)"><path d="M-19-5c2 23 33 27 40 0Z" fill="#b24c32"/><path d="M-16-5c4 16 27 20 34 0Z" fill="#e07d51"/><path d="m-10-1 5 5m6-2 0 7m7-8-3 5" stroke="#f3c88a" stroke-width="2" stroke-linecap="round"/></g>
+  <use href="#leaf" x="157" y="60" width="24" height="16" transform="rotate(-18 169 68)"/>
+ </g>
+</symbol>
+<symbol id="art-chicken" viewBox="0 0 220 180">
+ <use href="#art-plate" width="220" height="180"/>
+ <g transform="rotate(-13 110 95)">
+  <path d="M69 72c4-15 19-18 27-11 10-4 28 4 24 17 12 9 9 27-5 31-6 14-30 16-43 5-19-4-18-29-3-42Z" fill="#ac6c34"/>
+  <path d="M69 68c4-13 19-16 27-9 10-4 24 3 22 16 10 8 9 24-6 29-8 12-27 14-38 4-20-4-18-27-5-40Z" fill="#dba04e"/>
+  <path d="M133 101c9 4 20 12 29 15l8-8 7 6-8 10-3 7-8-5-31-12Z" fill="#dfd4ba"/><circle cx="172" cy="113" r="7" fill="#f9f0da"/><circle cx="167" cy="123" r="7" fill="#f9f0da"/>
+  <path d="M110 84c18-14 40-1 37 17-1 14-17 27-31 24-14-1-24-15-19-27 2-7 7-11 13-14Z" fill="#ac6b32"/>
+  <path d="M111 80c17-12 37 0 34 17-2 14-16 25-28 22-13 0-23-13-18-25 2-6 6-10 12-14Z" fill="#e2ac56"/>
+  <g fill="none" stroke="#f2ca80" stroke-width="2.5" stroke-linecap="round"><path d="m72 76 3-5 4 1m11-7 5 3m8 7 5-1m-40 13 5 3m10 10 4-3m11-9 2 4m8 8 3-5 5 0m9-6 5 4m-13 15 4 0m8-8 2 3"/></g>
+  <g fill="#b47739"><circle cx="84" cy="83" r="1.6"/><circle cx="96" cy="76" r="1.8"/><circle cx="76" cy="98" r="1.5"/><circle cx="113" cy="108" r="1.7"/><circle cx="136" cy="99" r="1.6"/><circle cx="121" cy="90" r="1.4"/></g>
+ </g>
+ <use href="#leaf" x="52" y="117" width="29" height="19" transform="rotate(34 67 126)"/>
+</symbol>
+<symbol id="art-milanesa" viewBox="0 0 220 180">
+ <use href="#art-plate" width="220" height="180"/>
+ <g transform="rotate(-15 110 96)">
+  <path d="M55 93c-7-23 10-38 30-37 13-10 40-4 47 9 28 0 46 18 37 37-2 23-31 30-51 26-17 9-59-9-63-35Z" fill="#ad763b"/>
+  <path d="M56 88c-5-19 10-34 29-32 15-10 38-4 47 8 28 0 44 17 35 33-2 23-30 27-49 23-19 9-58-9-62-32Z" fill="#d9a456"/>
+  <path d="M64 80c2-12 14-19 25-16 14-8 29-4 36 5" fill="none" stroke="#eec47f" stroke-width="3" stroke-linecap="round"/>
+  <path d="m73 80 5 2m15-12 3 2m16 7 3-2m24 7 4 2m-49 10 4 1m14 11 5 0m24-7 4-2m-66-4 2 3m42-14 2 2m29 9 4 2m-30 18 4-2" fill="none" stroke="#ad783d" stroke-width="2" stroke-linecap="round"/>
+  <path d="m79 90 4-1m18-8 4 2m20 7 3-1m-30 23 3 0m38-20 4 1m-10 11 3 0m-23-9 3 2" fill="none" stroke="#f4d598" stroke-width="2.2" stroke-linecap="round"/>
+ </g>
+ <g transform="translate(155 120) rotate(-17)"><path d="M-18-3c2 24 33 23 36 0Z" fill="#d7ac4a"/><path d="M-15-3c2 19 28 19 30 0Z" fill="#f4dc92"/><path d="M0-2v14M-11-1l7 12M11-1 4 11" stroke="#fff1c2" stroke-width="1.5"/></g>
+ <use href="#leaf" x="164" y="103" width="24" height="16" transform="rotate(27 176 111)"/>
+</symbol>
+<symbol id="art-sandwich" viewBox="0 0 220 180">
+ <use href="#art-plate" width="220" height="180"/>
+ <g transform="rotate(-8 110 96)">
+  <path d="m52 98 93-45 33 53-91 37Z" fill="#b88042"/><path d="m51 91 91-44 34 53-90 36Z" fill="#e1bb77"/>
+  <path d="m53 87 92-43 31 48-90 36Z" fill="#72533a"/><path d="m53 80 88-42 34 45-90 36Z" fill="#e8c47e"/>
+  <path d="m53 76 90-40 31 42-87 37Z" fill="#bc6042"/>
+  <path d="m51 70 15-4 7-8 11 1 12-9 13-1 8-8 12 0 15-8 33 41-13 0-8 9-12-1-9 10-11-1-13 10-12-1-10 9-10-1Z" fill="#789252"/>
+  <path d="m47 63 96-42 37 50-95 40Z" fill="#c59357"/><path d="m50 60 93-39 34 45-92 40Z" fill="#f1dbad"/>
+  <path d="m63 61 76-31 25 32-77 33Z" fill="#f8e7c5"/>
+  <path d="m97 40 28 48" stroke="#d1a96d" stroke-width="2.5"/>
+  <g fill="#ddbf8b"><ellipse cx="88" cy="59" rx="2" ry="1.2"/><ellipse cx="102" cy="78" rx="2.2" ry="1.3"/><ellipse cx="138" cy="54" rx="2.4" ry="1.3"/><ellipse cx="130" cy="43" rx="1.5" ry="1"/><ellipse cx="79" cy="73" rx="1.5" ry="1"/></g>
+ </g>
+</symbol>
+<symbol id="art-orange" viewBox="0 0 100 120">
+ <ellipse cx="48" cy="109" rx="26" ry="6" fill="#643620" opacity=".10"/>
+ <path d="m27 25 5 72c1 14 34 14 36 0l5-72Z" fill="#e8debc" stroke="#c6b997" stroke-width="1"/>
+ <path d="m29 38 5 58c2 11 30 11 32 0l5-58Z" fill="url(#orange-fill)"/>
+ <ellipse cx="50" cy="38" rx="21" ry="6" fill="#f6cd80"/>
+ <path d="m35 45 3 45" stroke="#ffebb9" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+ <path d="m58 62 7-53h13" fill="none" stroke="#f8f0da" stroke-width="4" stroke-linecap="round"/><path d="m58 62 7-53h13" fill="none" stroke="#85966a" stroke-width="1.3" stroke-dasharray="5 4"/>
+ <ellipse cx="50" cy="25" rx="23" ry="6" fill="none" stroke="#f6ecd4" stroke-width="1.5"/>
+ <g transform="translate(28 39) rotate(-25)"><circle r="17" fill="#d88b3e"/><circle r="14" fill="#f9deb1"/><circle r="11.5" fill="#edb15b"/><path d="M0-11v22M-11 0h22M-8-8 8 8M8-8-8 8" stroke="#fbe4bd" stroke-width="1.3"/><circle r="2" fill="#fff1d5"/></g>
+ <use href="#leaf" x="12" y="16" width="19" height="12" transform="rotate(-38 22 22)"/>
+ <path d="M37 101c7 3 18 3 25-1" fill="none" stroke="#f4cd82" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+
 </defs></svg>
   <header class="topbar">
     <div class="topbar-inner">
@@ -563,11 +685,8 @@
       </div>
       <div class="dish-grid" id="dishGrid" role="radiogroup" aria-labelledby="dishHeading"></div>
       <div class="variant-panel" id="variantPanel" hidden>
-        <h3 id="variantTitle">El pequeño gran dilema…</h3><p>¿Cuál de las dos se te antoja?</p>
-        <div class="variant-buttons" role="group" aria-labelledby="variantTitle">
-          <button type="button" class="variant-button" data-variant="Choripapa" aria-pressed="false">Choripapa</button>
-          <button type="button" class="variant-button" data-variant="Salchipapa" aria-pressed="false">Salchipapa</button>
-        </div>
+        <h3 id="variantTitle">El pequeño gran dilema…</h3><p>¿Qué versión se te antoja?</p>
+        <div class="variant-buttons" id="variantButtons" role="group" aria-labelledby="variantTitle"></div>
       </div>
     </section>
     <section class="drinks-section" id="drinksSection" aria-labelledby="drinksHeading">
@@ -585,7 +704,7 @@
       <p class="restore-note" id="saveStatus">Tu elección se guarda solo en este dispositivo.</p>
       <button type="button" id="resetButton" class="reset-button"><svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg>Empezar de nuevo</button>
     </footer>
-    <noscript><p>Para elegir platos y compartir tu menú, activá JavaScript en tu navegador. Para cocinar: Arroz blanco y tomate chino; Choripapa / salchipapa; Pasta de tomate; Fridosita. Para pedir: Señor lomo; Luisin. Para tomar: Coca cola; Agua con gas.</p></noscript>
+    <noscript><p>Para elegir platos y compartir tu menú, activá JavaScript en tu navegador. Para cocinar: Fetuccine; Ensalada camba casera; Lomo bife con fideo frito y tomate; Hamburguesa casera y papas fritas. Para pedir: Pollo frito Luisin; Pizza Papa Johns; Hamburguesa Autoria; Lomito Señor Lomo; Milanesa Don Bosco; Sándwich de Noa. Para tomar: Coca cola; Agua con gas; Zumo de naranja.</p></noscript>
   </main>
   <aside class="dock" aria-label="Resumen de tu elección">
     <div class="dock-inner">
@@ -634,23 +753,29 @@
    ============================================================= */
 const CONFIG = Object.freeze({
   whatsapp: '59177059843',
-  storageKey: 'nuestra-mesa-selection-v1',
+  // Nuevo menú: las selecciones de la versión anterior no se reutilizan.
+  storageKey: 'nuestra-mesa-selection-v2',
   themeKey: 'nuestra-mesa-theme',
   dishes: {
     cook: [
-      { id: 'rice', name: 'Arroz blanco y tomate chino', art: 'rice', tag: 'Un abrazo en un plato' },
-      { id: 'fries', name: 'Choripapa / salchipapa', art: 'fries', tag: 'Elegí tu versión favorita', variants: ['Choripapa', 'Salchipapa'] },
-      { id: 'pasta', name: 'Pasta de tomate', art: 'pasta', tag: 'Siempre es buena idea' },
-      { id: 'burger', name: 'Fridosita', art: 'burger', tag: 'Algo rico, sin vueltas' }
+      { id: 'fetuccine', name: 'Fetuccine', art: 'pasta', tag: 'Siempre es buena idea' },
+      { id: 'ensalada-camba', name: 'Ensalada camba casera', art: 'salad', tag: 'Con sabor a casa' },
+      { id: 'lomo-bife', name: 'Lomo bife con fideo frito y tomate', art: 'steak', tag: 'Un abrazo en un plato' },
+      { id: 'hamburguesa-casera', name: 'Hamburguesa casera y papas fritas', art: 'burger-fries', tag: 'El dúo que se disfruta en casa' }
     ],
     order: [
-      { id: 'lomo', name: 'Señor lomo', art: 'lomo', tag: 'Hoy cocina alguien más' },
-      { id: 'luisin', name: 'Luisin', art: 'luisin', tag: 'Que llegue algo rico' }
+      { id: 'pollo-luisin', name: 'Pollo frito Luisin', art: 'chicken', tag: 'Que llegue algo rico' },
+      { id: 'pizza-papa-johns', name: 'Pizza Papa Johns', art: 'pizza', tag: 'Para compartir con vos' },
+      { id: 'hamburguesa-autoria', name: 'Hamburguesa Autoria', art: 'hamburger', tag: 'Hoy nos damos un gusto' },
+      { id: 'lomito-senor-lomo', name: 'Lomito Señor Lomo', art: 'lomo', tag: 'Hoy cocina alguien más' },
+      { id: 'milanesa-don-bosco', name: 'Milanesa Don Bosco', art: 'milanesa', tag: 'Un antojo que no falla' },
+      { id: 'sandwich-noa', name: 'Sándwich de Noa', art: 'sandwich', tag: 'Algo rico, sin vueltas' }
     ]
   },
   drinks: [
-    { id: 'cola', name: 'Coca cola', art: 'cola', caption: 'El clásico de siempre' },
-    { id: 'water', name: 'Agua con gas', art: 'water', caption: 'Un brindis con burbujas' }
+    { id: 'cola', name: 'Coca cola', art: 'cola', caption: 'El clásico de siempre', bubbles: true },
+    { id: 'water', name: 'Agua con gas', art: 'water', caption: 'Un brindis con burbujas', bubbles: true },
+    { id: 'orange', name: 'Zumo de naranja', art: 'orange', caption: 'Un toque de sol en tu vaso', bubbles: false }
   ]
 });
 
@@ -674,7 +799,7 @@ function icon(name, extraClass = '') {
   return `<svg class="icon ${extraClass}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 }
 function art(name) {
-  const drink = name === 'cola' || name === 'water';
+  const drink = CONFIG.drinks.some(item => item.art === name);
   return `<svg viewBox="${drink ? '0 0 100 120' : '0 0 220 180'}" aria-hidden="true" focusable="false"><use href="#art-${name}"/></svg>`;
 }
 function selectedDish() { return CONFIG.dishes[state.mode].find(item => item.id === state.picks[state.mode]) || null; }
@@ -695,7 +820,7 @@ function loadState() {
       const pick = s.picks && s.picks[mode];
       state.picks[mode] = CONFIG.dishes[mode].some(item => item.id === pick) ? pick : null;
     }
-    const variants = CONFIG.dishes.cook.find(item => item.id === 'fries').variants;
+    const variants = selectedDish()?.variants || [];
     state.variant = variants.includes(s.variant) ? s.variant : null;
     state.drink = CONFIG.drinks.some(item => item.id === s.drink) ? s.drink : null;
     state.note = typeof s.note === 'string' ? s.note.slice(0,220) : '';
@@ -722,7 +847,9 @@ function announce(message) { $('selectionAnnouncement').textContent = message; }
 function renderDishes() {
   const order = state.mode === 'order';
   $('dishHeading').textContent = order ? 'Que cocinen por nosotros' : 'Se cocina en casa';
-  $('dishCaption').textContent = order ? 'Vos elegís de dónde. El antojo manda.' : 'Cuatro antojos. Una decisión deliciosa.';
+  const count = CONFIG.dishes[state.mode].length;
+  const countName = ({ 1: 'Un', 2: 'Dos', 3: 'Tres', 4: 'Cuatro', 5: 'Cinco', 6: 'Seis' })[count] || String(count);
+  $('dishCaption').textContent = order ? 'Vos elegís de dónde. El antojo manda.' : `${countName} ${count === 1 ? 'antojo' : 'antojos'}. Una decisión deliciosa.`;
   $('dishGrid').classList.toggle('order-grid', order);
   $('dishGrid').innerHTML = CONFIG.dishes[state.mode].map(item => `
     <label class="dish-option">
@@ -743,7 +870,7 @@ function renderDrinks() {
       <span class="drink-card">
         <span class="selection-mark">${icon('plus','plus-icon')}${icon('check','checked-icon')}</span>
         <span class="drink-art">${art(item.art)}</span><span class="drink-name">${escapeHtml(item.name)}</span><span class="drink-caption">${escapeHtml(item.caption)}</span>
-        <span class="bubble" aria-hidden="true"></span><span class="bubble" aria-hidden="true"></span><span class="bubble" aria-hidden="true"></span>
+        ${item.bubbles ? '<span class="bubble" aria-hidden="true"></span><span class="bubble" aria-hidden="true"></span><span class="bubble" aria-hidden="true"></span>' : ''}
       </span>
     </label>`).join('');
 }
@@ -753,7 +880,13 @@ function syncUI({ save = true } = {}) {
   document.querySelectorAll('input[name="mode"]').forEach(input => input.checked = input.value === state.mode);
   document.querySelectorAll('input[name="dish"]').forEach(input => input.checked = input.value === state.picks[state.mode]);
   document.querySelectorAll('input[name="drink"]').forEach(input => input.checked = input.value === state.drink);
-  $('variantPanel').hidden = !(dish && dish.variants);
+  const variants = dish?.variants || [];
+  $('variantPanel').hidden = variants.length === 0;
+  const variantKey = variants.length ? dish.id : '';
+  if ($('variantButtons').dataset.dish !== variantKey) {
+    $('variantButtons').dataset.dish = variantKey;
+    $('variantButtons').innerHTML = variants.map(value => `<button type="button" class="variant-button" data-variant="${escapeHtml(value)}" aria-pressed="false">${escapeHtml(value)}</button>`).join('');
+  }
   document.querySelectorAll('[data-variant]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.variant === state.variant)));
   $('stepFood').className = `journey-step ${foodReady ? 'done' : 'active'}`;
   $('stepDrink').className = `journey-step ${drink ? 'done' : (foodReady ? 'active' : '')}`;
@@ -766,7 +899,7 @@ function syncUI({ save = true } = {}) {
   $('dockStatus').classList.toggle('ready', ready);
   $('dockTitle').textContent = dish ? selectedName() : 'La mesa está puesta';
   $('dockSubtitle').textContent = !dish ? (drink ? `${drink.name} elegida. Falta tu plato.` : 'Solo faltan tu plato y tu bebida.')
-    : !foodReady ? 'Falta elegir: choripapa o salchipapa.'
+    : !foodReady ? 'Falta elegir tu versión favorita.'
     : drink ? `${state.mode === 'cook' ? 'Para cocinar' : 'Para pedir'} · ${drink.name}` : 'Buenísimo. Ahora, algo para tomar.';
   $('reviewLabel').textContent = !dish ? 'Elegir mi plato' : !foodReady ? 'Elegir mi versión' : !drink ? 'Elegir mi bebida' : 'Ver mi elección';
   $('noteCount').textContent = state.note.length;
@@ -814,7 +947,7 @@ function buildMessage() {
     '❤️ Mi elección del Menú de la Casa ❤️',
     '',
     order ? '🛍️ Plan: Pedir comida' : '🏡 Plan: Cocinar en casa',
-    `${order ? '🍽️ Pedir de' : '🍽️ Plato'}: ${selectedName()}`,
+    `${order ? '🍽️ Para pedir' : '🍽️ Plato'}: ${selectedName()}`,
     `🥤 Bebida: ${selectedDrink().name}`,
     ...(state.note.trim() ? ['', `📝 Nota: ${state.note.trim()}`] : []),
     '',
@@ -825,7 +958,7 @@ function showSummary() {
   if (!planIsReady()) return;
   const dish = selectedDish(), drink = selectedDrink(), order = state.mode === 'order';
   $('summaryMode').textContent = order ? 'HOY PEDIMOS' : 'HECHO EN CASA';
-  $('summaryFoodLabel').textContent = order ? 'Pedir de' : 'Para cocinar';
+  $('summaryFoodLabel').textContent = order ? 'Para pedir' : 'Para cocinar';
   $('summaryFood').textContent = selectedName();
   $('summaryDrink').textContent = drink.name;
   $('summaryFoodArt').innerHTML = art(dish.art);
@@ -947,24 +1080,25 @@ document.querySelectorAll('input[name="mode"]').forEach(input => {
   input.addEventListener('change', () => {
     state.mode = input.value;
     renderDishes(); syncUI();
-    announce(state.mode === 'cook' ? 'Para cocinar. Cuatro opciones.' : 'Para pedir. Dos opciones.');
+    announce(`${state.mode === 'cook' ? 'Para cocinar' : 'Para pedir'}. ${CONFIG.dishes[state.mode].length} opciones.`);
   });
 });
 $('dishGrid').addEventListener('change', event => {
   if (!event.target.matches('input[name="dish"]')) return;
   state.picks[state.mode] = event.target.value;
+  if (!(selectedDish()?.variants || []).includes(state.variant)) state.variant = null;
   syncUI();
-  announce(`${selectedName()} seleccionado. ${dishIsReady() ? 'Elegí tu bebida.' : 'Elegí choripapa o salchipapa.'}`);
+  announce(`${selectedName()} seleccionado. ${dishIsReady() ? 'Elegí tu bebida.' : 'Elegí tu versión favorita.'}`);
   if (selectedDish().variants && !state.variant) {
     requestAnimationFrame(() => guideTo($('variantPanel'), document.querySelector('[data-variant]')));
   }
 });
-document.querySelectorAll('[data-variant]').forEach(button => {
-  button.addEventListener('click', () => {
-    state.variant = button.dataset.variant;
-    syncUI();
-    announce(`${state.variant} seleccionada.`);
-  });
+$('variantButtons').addEventListener('click', event => {
+  const button = event.target.closest('[data-variant]');
+  if (!button || !(selectedDish()?.variants || []).includes(button.dataset.variant)) return;
+  state.variant = button.dataset.variant;
+  syncUI();
+  announce(`${state.variant} seleccionada.`);
 });
 $('drinkGrid').addEventListener('change', event => {
   if (!event.target.matches('input[name="drink"]')) return;
@@ -992,7 +1126,7 @@ $('shareButton').addEventListener('click', sharePlan);
 $('surpriseButton').addEventListener('click', () => {
   randomMode = state.mode;
   randomCandidate = null;
-  $('surpriseIntro').textContent = state.mode === 'cook' ? 'Una opción para cocinar + algo para tomar.' : 'Un lugar para pedir + algo para tomar.';
+  $('surpriseIntro').textContent = state.mode === 'cook' ? 'Una opción para cocinar + algo para tomar.' : 'Una opción para pedir + algo para tomar.';
   openDialog($('surpriseDialog')); spin();
 });
 $('againSurprise').addEventListener('click', spin);
@@ -1001,7 +1135,7 @@ $('acceptSurprise').addEventListener('click', () => {
   const candidate = randomCandidate;
   state.mode = randomMode;
   state.picks[randomMode] = candidate.dish.id;
-  if (candidate.variant) state.variant = candidate.variant;
+  state.variant = candidate.variant || null;
   state.drink = candidate.drink.id;
   $('surpriseDialog').close();
   renderDishes(); syncUI();
